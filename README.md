@@ -6,6 +6,7 @@ cada etapa em que você se encontra para a continuação ou a finalização do p
 
 ## Tecnologias utilizadas
 - HTML5
+- JavaScript
 - PHP (sem framework)
 - JSON (como banco de dados simples)
 
