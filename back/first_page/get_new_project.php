@@ -11,14 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 $entrada_json = file_get_contents('php://input');
 $dados_entrada = json_decode($entrada_json, true);
 
-$nome_projeto = $dados_entrada['nome_projeto'] ?? null;
-$descricao_projeto = $dados_entrada['descricao_projeto'] ?? null;
+$nome_projeto = $dados_entrada['nome_projeto'] ?? "Novo Projeto";
+$descricao_projeto = $dados_entrada['descricao_projeto'] ?? "";
 
 function dados_do_arquivo_json () {
     $arquivo = '../armazenando_projetos.json';
-    if (!file_exists($arquivo)) {
-        file_put_contents($arquivo, json_encode([]));
-    }
     return json_decode(file_get_contents($arquivo), true);
 }
 
