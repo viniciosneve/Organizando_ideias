@@ -1,3 +1,5 @@
+let projetos_criados = [];
+
 document.getElementById('form_criar_projeto').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -6,7 +8,7 @@ document.getElementById('form_criar_projeto').addEventListener('submit', functio
     descricao_projeto: document.getElementById('descricao_projeto').value
   };
 
-  fetch('http://localhost:8000/get_new_project.php', {
+  fetch('http://localhost:8000/first_page/get_new_project.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -17,23 +19,58 @@ document.getElementById('form_criar_projeto').addEventListener('submit', functio
     .then(response => response.json())
     .then(data => {
       document.getElementById('form_criar_projeto').reset();
-      // Criar uma função que retornar todos os projetos armazenados dentro de divs separando cada projeto com as suas devidas informações
-      /*function exibirProjetos(projetos) {
-        const container = document.getElementById('projetos_container');
-        container.innerHTML = ''; // Limpar conteúdo anterior
-
-        projetos.forEach(projeto => {
-          const div = document.createElement('div');
-          div.classList.add('projeto');
-          div.innerHTML = `
-            <h2>${projeto.nome}</h2>
-            <p>${projeto.descricao}</p>
-          `;
-          container.appendChild(div);
-        });
-      }*/
     })
     .catch(error => {
       console.error('Erro:', error);
     });
 });
+
+function carregar_projetos() {
+  fetch('http://localhost:8000/first_page/get_new_project.php')
+    .then(response => response.json())
+    .then(data => {
+      projetos_criados = data.dados['projetos'];
+      exibir_projetos(projetos_criados);
+    })
+    .catch(error => {
+      console.error('Erro ao carregar projetos:', error);
+    });
+}
+
+function exibir_projetos(projetos) {
+  const container = document.getElementById('projetos_criados');
+
+  projetos.forEach(projeto => {
+    const id_projeto = { id: projeto.id };
+    const div = document.createElement('div');
+    div.classList.add('projetos');
+    div.id = projeto.id;
+    div.innerHTML = `
+      <h2>${projeto.nome_projeto}</h2>
+      <p>Descrição: ${projeto.descricao_projeto}</p>
+      <p>Data criação: ${projeto.data_criacao}</p>
+      <button type="submit" id="selecionar_${projeto.id}" class="botao_selecionando_projeto" onclick= selecionando_projeto(${JSON.stringify(id_projeto)})>Selecionar Projeto</button>
+      <button type="submit" id="excluir_${projeto.id}" class="botao_excluindo_projeto">Excluir Projeto</button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function selecionando_projeto(projeto) {
+  fetch('http://localhost:8000/secunde_page/project.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(projeto)
+
+  })
+    .then(response => response.json())
+    .catch(error => {
+      console.error('Erro:', error);
+  });
+
+  location.assign("/secund_page/Detalhes_projeto.html");
+}
+
+carregar_projetos();

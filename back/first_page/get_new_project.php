@@ -11,16 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 $entrada_json = file_get_contents('php://input');
 $dados_entrada = json_decode($entrada_json, true);
 
-$nome_projeto = $dados_entrada['nome_projeto'] ?? "Novo Projeto";
-$descricao_projeto = $dados_entrada['descricao_projeto'] ?? "";
+$nome_projeto = $dados_entrada['nome_projeto'] ?? 'Novo Projeto';
+$descricao_projeto = $dados_entrada['descricao_projeto'] ?? '';
 
 function dados_do_arquivo_json () {
-    $arquivo = '../armazenando_projetos.json';
+    $arquivo = 'armazenando_projetos.json';
     return json_decode(file_get_contents($arquivo), true);
 }
 
 function salvar_dados_no_arquivo_json($dados) {
-    $arquivo = '../armazenando_projetos.json';
+    $arquivo = 'armazenando_projetos.json';
     file_put_contents($arquivo, json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 }
 
@@ -34,14 +34,14 @@ $dados_armazenados_no_json['projetos'][] = [
     'notas_projeto' => []
 ];
 
-salvar_dados_no_arquivo_json($dados_armazenados_no_json);
+
+if ($descricao_projeto != '') {
+    salvar_dados_no_arquivo_json($dados_armazenados_no_json);
+}
 
 header('Content-Type: application/json');
 
 echo json_encode([
-    "mensagem" => "Novo item adicionado com sucesso",
-    "nome_projeto" => $nome_projeto,
-    "descricao_projeto" => $descricao_projeto,
     "dados" => dados_do_arquivo_json()
 ]);
 
