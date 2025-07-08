@@ -17,7 +17,7 @@ cada etapa em que você se encontra para a continuação ou a finalização do p
 
 ## Detalhes:
 ### Observação:
-Hoje fiz novas atualizações, fazendo funcionar a função que mostra os projetos criados sem fazer com que crie novos projetos sempre que atualizar a pagina, tive um leve estresse por não saber bem o que fazer para manter o código limpo, o que me fez ficar um bom tempo perdido achegando a procrastinar por um momento, até que voltei com a mente limpa e destravado, adicionei dois botões para cada projeto exibido um para excluir e o outro para fazer as modificações no projeto, o botão que faz a modificação deve enviar o id do projeto selecionado para o arquivo 'project.php' que eventualmente vai pegar o projeto que tem o id enviado, e depois disso o site é redirecionado para outra pagina que deve exibir o projeto com as notas criadas e um formulário para criar novas notas.
+Hoje depois de uma semana praticamente sem mexer nesse programa, conseguir me recompor graças a Deus e voltei, conseguir solucionar o problema com relação ao enviar o ID para o banco de dados e armazenar, a minha ideia a tual e transformar o arquivo "project.php" em um arquivo único para ter apenas a função de salvar o ID no arquivo "pegando_projeto.json" - e depois fazer um novo arquivo responsável por pegar o ID que foi armazenado no arquivo "pegando_projeto.json" e usar ele para localizar o projeto dentro do arquivo "armazenamento_projeto.json", e por fim exibir o que for necessário para a criação de notas e etc.
 
 ### Ideias razas do que imagino do site:
  A ideia também é criar uns botões em cada projeto exibido, que redireciona para uma
@@ -53,8 +53,8 @@ identidicados pelo id, e a descrição deve ser preenchida.
 
 - função "salvar_dados_no_arquivo_json" -> Usado para armazenar os novos dados dentro do arquivo "armazenamento_projetos.json". Pretendo pensar em tornar essa função mais eficiente de alguma forma.
 
- Bom como novas funções foram criadas no JS vou esta explicando aqui para que serve
-cada um deles:
+ Bom como novas funções foram criadas no aquivo "Novo_projeto.js" vou esta explicando
+aqui para que serve cada um deles:
 
 - função "exibir_projetos" -> Ele recebe os dados armazenado no "armazenamento_projetos.json" e adicionar em uma div todos os projetos existentes.
 
@@ -62,5 +62,7 @@ cada um deles:
 
 - função "selecionando_projeto" -> Essa função deve pegar o ID do projeto selecionado para adicionar/atualizar/excluir notas do projeto, e enviar para o servidor no arquivo "project.php" e por fim redirecionar para a pagina "Detalhes_projeto.html".
 
+ Temos agora dois novos arquivo "Detalhes_projeto.js" e "project.php" com funções
+iguais aos outros arquivos criados anteriormente.
+
 ### Problema atual:
-O arquivo "project.php" não está recebendo o ID enviado.

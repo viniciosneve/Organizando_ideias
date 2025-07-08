@@ -1,3 +1,5 @@
+//const { createElement } = require("react");
+
 let projetos_criados = [];
 
 document.getElementById('form_criar_projeto').addEventListener('submit', function (e) {
@@ -41,7 +43,6 @@ function exibir_projetos(projetos) {
   const container = document.getElementById('projetos_criados');
 
   projetos.forEach(projeto => {
-    const id_projeto = { id: projeto.id };
     const div = document.createElement('div');
     div.classList.add('projetos');
     div.id = projeto.id;
@@ -49,9 +50,16 @@ function exibir_projetos(projetos) {
       <h2>${projeto.nome_projeto}</h2>
       <p>Descrição: ${projeto.descricao_projeto}</p>
       <p>Data criação: ${projeto.data_criacao}</p>
-      <button type="submit" id="selecionar_${projeto.id}" class="botao_selecionando_projeto" onclick= selecionando_projeto(${JSON.stringify(id_projeto)})>Selecionar Projeto</button>
       <button type="submit" id="excluir_${projeto.id}" class="botao_excluindo_projeto">Excluir Projeto</button>
     `;
+    const botao_selecionando_projeto = document.createElement('button');
+    botao_selecionando_projeto.classList.add('botao_selecionando_projeto');
+    botao_selecionando_projeto.innerHTML = 'Selecionar Projeto';
+    botao_selecionando_projeto.id = `selecionar_${projeto.id}`;
+    botao_selecionando_projeto.type = 'submit';
+    botao_selecionando_projeto.onclick = () => {selecionando_projeto(projeto.id);};
+    div.appendChild(botao_selecionando_projeto);
+
     container.appendChild(div);
   });
 }
@@ -71,6 +79,7 @@ function selecionando_projeto(projeto) {
   });
 
   location.assign("/secund_page/Detalhes_projeto.html");
+  
 }
 
 carregar_projetos();
