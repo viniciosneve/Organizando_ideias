@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../gerencia_json.php';
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -14,17 +15,9 @@ $dados_entrada = json_decode($entrada_json, true);
 $nome_projeto = $dados_entrada['nome_projeto'] ?? 'Novo Projeto';
 $descricao_projeto = $dados_entrada['descricao_projeto'] ?? '';
 
-function dados_do_arquivo_json () {
-    $arquivo = 'armazenando_projetos.json';
-    return json_decode(file_get_contents($arquivo), true);
-}
+$nome_arquivo_json = 'armazenando_projetos.json';
 
-function salvar_dados_no_arquivo_json($dados) {
-    $arquivo = 'armazenando_projetos.json';
-    file_put_contents($arquivo, json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-}
-
-$dados_armazenados_no_json = dados_do_arquivo_json();
+$dados_armazenados_no_json = dados_do_arquivo_json($nome_arquivo_json);
 
 $dados_armazenados_no_json['projetos'][] = [
     'id' => count($dados_armazenados_no_json['projetos']) + 1,
@@ -36,13 +29,13 @@ $dados_armazenados_no_json['projetos'][] = [
 
 
 if ($descricao_projeto != '') {
-    salvar_dados_no_arquivo_json($dados_armazenados_no_json);
+    salvar_dados_no_arquivo_json($nome_arquivo_json, $dados_armazenados_no_json);
 }
 
 header('Content-Type: application/json');
 
 echo json_encode([
-    "dados" => dados_do_arquivo_json()
+    "dados" => dados_do_arquivo_json($nome_arquivo_json)
 ]);
 
 ?>

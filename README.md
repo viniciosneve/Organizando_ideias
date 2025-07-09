@@ -17,7 +17,9 @@ cada etapa em que você se encontra para a continuação ou a finalização do p
 
 ## Detalhes:
 ### Observação:
-Hoje depois de uma semana praticamente sem mexer nesse programa, conseguir me recompor graças a Deus e voltei, conseguir solucionar o problema com relação ao enviar o ID para o banco de dados e armazenar, a minha ideia a tual e transformar o arquivo "project.php" em um arquivo único para ter apenas a função de salvar o ID no arquivo "pegando_projeto.json" - e depois fazer um novo arquivo responsável por pegar o ID que foi armazenado no arquivo "pegando_projeto.json" e usar ele para localizar o projeto dentro do arquivo "armazenamento_projeto.json", e por fim exibir o que for necessário para a criação de notas e etc.
+Hoje Fiz a nova atualização no código, demorei um pouco para fazer algo simples mas era por que eu estava pensando em uma forma de continuar de forma que não bagunçasse tudo, praticamente pensado em como eu ia lidar com o meu dilema anterior e resolvir criar diferentes tipos de arquivos para lidar com funcionalidades específicas do site, e que no fim eu ia mesclar os arquivos que não tem necissidade de ser individual e manter separado arquivos que tem que assumir uma responsabilidade específica para não deixar o código muito bagunçado ou sujo, evitando assim que eu tenha dificuldade de alterar o que for necessário para tornar o programa funcional e mais fácil e rápido de manipular.
+
+Agora apenas tenho que da continuidade para fazer a proxima parte acontecer, que é pegar os dados do arquivo selecionado e apresentar, e depois fazer um programa que adiciona, remove e/ou atualiza as notas do projeto selecionado - e fazer com que mostre também as notas criadas.
 
 ### Ideias razas do que imagino do site:
  A ideia também é criar uns botões em cada projeto exibido, que redireciona para uma
@@ -47,7 +49,7 @@ identidicados pelo id, e a descrição deve ser preenchida.
  A data de criação é colocado altomaticamente pelo arquivo "get_new_project.php".
 
  Acredito que não tem muito o que explicar sobre as variáveis e funções no arquivo
-"get_new_project.php", mas vou explicar de forma bem breve as funções:
+"gerencia_json.php", mas vou explicar de forma bem breve as funções:
 
 - função "dados_do_arquivo_json" -> Usado para pegar os dados do arquivo JSON em especifico o "armazenamento_projetos.json". Pretendo pensar em tornar essa função mais eficiente de alguma forma.
 
@@ -62,7 +64,7 @@ aqui para que serve cada um deles:
 
 - função "selecionando_projeto" -> Essa função deve pegar o ID do projeto selecionado para adicionar/atualizar/excluir notas do projeto, e enviar para o servidor no arquivo "project.php" e por fim redirecionar para a pagina "Detalhes_projeto.html".
 
- Temos agora dois novos arquivo "Detalhes_projeto.js" e "project.php" com funções
-iguais aos outros arquivos criados anteriormente.
+ Temos agora dois novos arquivo "Detalhes_projeto.js" com funções iguais ao
+outro arquivo JS.
 
 ### Problema atual:
