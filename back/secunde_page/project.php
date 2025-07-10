@@ -25,9 +25,4 @@ $projeto_selecionado['projeto'] = [
 if ($id_projeto != '') {
     salvar_dados_no_arquivo_json($nome_arquivo_json, $projeto_selecionado);
 }
-
-header('Content-Type: application/json');
-echo json_encode([
-    "dados" => dados_do_arquivo_json($nome_arquivo_json)['projeto']['id']
-]);
 ?>

@@ -1,5 +1,3 @@
-//const { createElement } = require("react");
-
 let projetos_criados = [];
 
 document.getElementById('form_criar_projeto').addEventListener('submit', function (e) {

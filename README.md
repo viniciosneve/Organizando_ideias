@@ -17,9 +17,11 @@ cada etapa em que você se encontra para a continuação ou a finalização do p
 
 ## Detalhes:
 ### Observação:
-Hoje Fiz a nova atualização no código, demorei um pouco para fazer algo simples mas era por que eu estava pensando em uma forma de continuar de forma que não bagunçasse tudo, praticamente pensado em como eu ia lidar com o meu dilema anterior e resolvir criar diferentes tipos de arquivos para lidar com funcionalidades específicas do site, e que no fim eu ia mesclar os arquivos que não tem necissidade de ser individual e manter separado arquivos que tem que assumir uma responsabilidade específica para não deixar o código muito bagunçado ou sujo, evitando assim que eu tenha dificuldade de alterar o que for necessário para tornar o programa funcional e mais fácil e rápido de manipular.
+Hoje graças a Deus conseguir ser um pouco mais agil e conseguir finalizar várias partes do projeto bem rápido - apesar de perder o foco em alguns momentos por ficar meio desorientado com a procura do geito certo de fazer as coisas acontecer, mas isso não me impediu de avançar bastante estou bem proximo de finalizar os projetos, e sempre que eu me encomodo com o dsigne eu paro e penso na minha prioridade que é fazer tudo funcionar antes de mais nada, depois que tudo estiver funcionando de forma correta ai eu começo a mexer no dsigner do projeto.
 
-Agora apenas tenho que da continuidade para fazer a proxima parte acontecer, que é pegar os dados do arquivo selecionado e apresentar, e depois fazer um programa que adiciona, remove e/ou atualiza as notas do projeto selecionado - e fazer com que mostre também as notas criadas.
+O que falta agora é conseguir pegar os dados das notas, salvar e exibir, não posso esquecer que antes de finalizar isso troca os arquivos JSON necessários para arquivo SQL, como que já faz um tempo que eu não mexo com SQL então imagino que terei um pouco de dificuldade.
+
+Claro que além disso tenho que tomar cuidado com os IDs para não ter projetos com ID repetido ou que não o pertence, criar os botões como atualizar e remover. O importante é finalizar o principal.
 
 ### Ideias razas do que imagino do site:
  A ideia também é criar uns botões em cada projeto exibido, que redireciona para uma
@@ -64,7 +66,6 @@ aqui para que serve cada um deles:
 
 - função "selecionando_projeto" -> Essa função deve pegar o ID do projeto selecionado para adicionar/atualizar/excluir notas do projeto, e enviar para o servidor no arquivo "project.php" e por fim redirecionar para a pagina "Detalhes_projeto.html".
 
- Temos agora dois novos arquivo "Detalhes_projeto.js" com funções iguais ao
-outro arquivo JS.
+o arquivo "Detalhes_projeto.js" tem uma única função, usado para pegar os dados do projeto selecionado no arquivo "get_project.php" e fazer com exiba os detalhes do projeto e que permite o usuário criar uma nota para ser adicionado no projeto.
 
 ### Problema atual:
