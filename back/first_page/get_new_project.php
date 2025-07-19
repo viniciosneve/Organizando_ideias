@@ -20,7 +20,7 @@ $nome_arquivo_json = 'armazenando_projetos.json';
 $dados_armazenados_no_json = dados_do_arquivo_json($nome_arquivo_json);
 
 $dados_armazenados_no_json['projetos'][] = [
-    'id' => count($dados_armazenados_no_json['projetos']) + 1,
+    'id' => count($dados_armazenados_no_json['projetos']),
     'nome_projeto' => $nome_projeto,
     'descricao_projeto' => $descricao_projeto,
     'data_criacao' => date('Y-m-d H:i:s'),

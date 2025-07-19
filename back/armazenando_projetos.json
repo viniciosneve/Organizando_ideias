@@ -1,11 +1,42 @@
 {
     "projetos": [
         {
-            "id": 1,
+            "id": 0,
             "nome_projeto": "novo_projeto",
             "descricao_projeto": "testando função",
             "data_criacao": "2025-06-25 21:03:13",
-            "notas_projeto": []
+            "notas_projeto": [
+                {
+                    "id": 0,
+                    "nome_nota": "nova_nota",
+                    "descricao_nota": "hfghh",
+                    "data_criacao": "2025-07-18 21:44:33"
+                },
+                {
+                    "id_nota": 1,
+                    "nome_nota": "nova_nota",
+                    "descricao_nota": "fff",
+                    "data_criacao": "2025-07-18 23:33:40"
+                },
+                {
+                    "id_nota": 2,
+                    "nome_nota": "nova_notafd",
+                    "descricao_nota": "doidera de maize",
+                    "data_criacao": "2025-07-18 23:36:07"
+                },
+                {
+                    "id_nota": 3,
+                    "nome_nota": "nova_nota",
+                    "descricao_nota": "sd",
+                    "data_criacao": "2025-07-18 23:38:42"
+                },
+                {
+                    "id_nota": 4,
+                    "nome_nota": "atualização",
+                    "descricao_nota": "atualização",
+                    "data_criacao": "2025-07-18 23:39:15"
+                }
+            ]
         }
     ]
 }

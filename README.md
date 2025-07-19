@@ -17,11 +17,13 @@ cada etapa em que você se encontra para a continuação ou a finalização do p
 
 ## Detalhes:
 ### Observação:
-Hoje graças a Deus conseguir ser um pouco mais agil e conseguir finalizar várias partes do projeto bem rápido - apesar de perder o foco em alguns momentos por ficar meio desorientado com a procura do geito certo de fazer as coisas acontecer, mas isso não me impediu de avançar bastante estou bem proximo de finalizar os projetos, e sempre que eu me encomodo com o dsigne eu paro e penso na minha prioridade que é fazer tudo funcionar antes de mais nada, depois que tudo estiver funcionando de forma correta ai eu começo a mexer no dsigner do projeto.
+Depois de um tempo sem tocar neste código, conseguir finalizar a outra parte do programa, que era pegar as notas salvas pelo usuário, salvar nas notas do projeto e por fim exibir na pagina, quebrei um pouco a cabeça mas conseguir fazer isso sem precisar criar um outro arquivo para fazer essa funcionalidade funcionar, por um momento eu estava muito afim, mas aos poucos vi que não era necessário e que se eu focasse um pouco iria conseguir fazer isso da certo sem me perder no meio dos códigos.
 
-O que falta agora é conseguir pegar os dados das notas, salvar e exibir, não posso esquecer que antes de finalizar isso troca os arquivos JSON necessários para arquivo SQL, como que já faz um tempo que eu não mexo com SQL então imagino que terei um pouco de dificuldade.
+Não posso deixar de fazer a atualização dos IDs dos projetos e notas criadas e excluidas, ao invés de fazer com que os seus IDs fossem um valor a mais do index que o mesmo pertence, eu decidir colocar o ID igual ao index que o mesmo pertence, assim fica fácil de fazer a troca quando for excluir um projeto ou uma nota.
 
-Claro que além disso tenho que tomar cuidado com os IDs para não ter projetos com ID repetido ou que não o pertence, criar os botões como atualizar e remover. O importante é finalizar o principal.
+Por fim agora só falta fazer os botões de remover e atualizar tanto a nota quanto o projeto.
+
+Obs: Estou ansioso para ver isso pronto e começar a estilizar a pagina, por mais que eu goste bastante pelo back-end eu tenho um apreço pelo front, acho que é por causa da facilidade, pouco problema e da valocidade que você consegue finalizar, por conta disso eu gosto do front, mas no fim isso não supera a paixão que tenho pela satisfação após conseguir solucionar um problema ou fazer um programa funcionar no back-end.
 
 ### Ideias razas do que imagino do site:
  A ideia também é criar uns botões em cada projeto exibido, que redireciona para uma
@@ -67,5 +69,7 @@ aqui para que serve cada um deles:
 - função "selecionando_projeto" -> Essa função deve pegar o ID do projeto selecionado para adicionar/atualizar/excluir notas do projeto, e enviar para o servidor no arquivo "project.php" e por fim redirecionar para a pagina "Detalhes_projeto.html".
 
 o arquivo "Detalhes_projeto.js" tem uma única função, usado para pegar os dados do projeto selecionado no arquivo "get_project.php" e fazer com exiba os detalhes do projeto e que permite o usuário criar uma nota para ser adicionado no projeto.
+
+O arquivo "get_project.php" passou a ter a seguinte função "pegando_projeto()", o mesmo serve para pegar os projetos armezandos no arquivo "armazenamento_projetos.json", e o motivo da criação dessa função é para não repetir o mesmo bloco de código duas vezes no arquivo.
 
 ### Problema atual:
