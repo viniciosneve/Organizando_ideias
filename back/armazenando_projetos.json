@@ -7,7 +7,7 @@
             "data_criacao": "2025-06-25 21:03:13",
             "notas_projeto": [
                 {
-                    "id": 0,
+                    "id_nota": 0,
                     "nome_nota": "nova_nota",
                     "descricao_nota": "hfghh",
                     "data_criacao": "2025-07-18 21:44:33"
@@ -35,6 +35,12 @@
                     "nome_nota": "atualização",
                     "descricao_nota": "atualização",
                     "data_criacao": "2025-07-18 23:39:15"
+                },
+                {
+                    "id_nota": 5,
+                    "nome_nota": "fzsdf",
+                    "descricao_nota": "sffsdf",
+                    "data_criacao": "2025-07-23 23:25:27"
                 }
             ]
         }

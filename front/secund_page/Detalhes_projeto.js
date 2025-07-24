@@ -2,7 +2,6 @@ function selecionando_projeto() {
   fetch('http://localhost:8000/secunde_page/get_project.php')
     .then(response => response.json())
     .then(data => {
-      console.log('Dados do projeto:', data);
       document.getElementById('projeto_selecionado').innerHTML = `
         <div id="div_form_criar_notas">
           <h2>Criando novas notas</h2>
@@ -29,11 +28,47 @@ function selecionando_projeto() {
                 <h3 class="titulo_nota">Nome: ${nota.nome_nota}</h3>
                 <p class="descricao_nota">Descrição:<br>${nota.descricao_nota}</p>
                 <p class="data_nota">Data: ${nota.data_criacao}</p>
+                <button class="alterar_nota" id="alterar_nota_${nota.id_nota}">Alterar</button>
               </div>
             `).join('')}
           </div>
         </div>
       `;
+      document.querySelectorAll(".alterar_nota").forEach(button => {
+        button.addEventListener("click", function() {
+          const nota_selecionada = data.dados.notas_projeto[button.id.split('_')[2]];
+          
+          const overlay = document.createElement('div');
+          overlay.id = 'overlay_alterar_nota';
+          overlay.style.position = 'fixed';
+          overlay.style.top = 0;
+          overlay.style.left = 0;
+          overlay.style.width = '100%';
+          overlay.style.height = '100%';
+          overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+          overlay.style.display = 'flex';
+          overlay.style.justifyContent = 'center';
+          overlay.style.alignItems = 'center';
+          overlay.style.zIndex = 9999;
+
+          const modal = document.createElement('div');
+          modal.innerHTML = `
+            <h2>Alterar Nota</h2>
+            <form id="form_alterar_nota">
+              <label for="nome_nota">Nome da nota:</label>
+              <input type="text" id="nome_nota" name="nome_nota" value="${nota_selecionada.nome_nota}" required>
+              <br>
+              <label for="descricao_nota">Descrição da nota:</label>
+              <textarea id="descricao_nota" name="descricao_nota" required>${nota_selecionada.descricao_nota}</textarea>
+              <br>
+              <button type="submit" id="botao_alterar_nota">Alterar Nota</button>
+            </form>
+          `;
+          overlay.appendChild(modal);
+          document.body.appendChild(overlay);
+        });
+      });
+
       document.getElementById('form_criar_notas').addEventListener('submit', function (e) {
         e.preventDefault();
 

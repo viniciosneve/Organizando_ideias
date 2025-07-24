@@ -17,13 +17,11 @@ cada etapa em que você se encontra para a continuação ou a finalização do p
 
 ## Detalhes:
 ### Observação:
-Depois de um tempo sem tocar neste código, conseguir finalizar a outra parte do programa, que era pegar as notas salvas pelo usuário, salvar nas notas do projeto e por fim exibir na pagina, quebrei um pouco a cabeça mas conseguir fazer isso sem precisar criar um outro arquivo para fazer essa funcionalidade funcionar, por um momento eu estava muito afim, mas aos poucos vi que não era necessário e que se eu focasse um pouco iria conseguir fazer isso da certo sem me perder no meio dos códigos.
+Hoje não fiz muita coisa, mas o pouco que fiz me deixa mais perto do fim e mais confiente de que eu posso me torna aquilo que eu quero ser, só tenho que aprender a lidar melhor com a minha necessidade de jogar e a de programar, pois e de jogar acaba ganhando mesmo eu sabendo que programar me da um senso de satisfação muito maior do que jogar, mas mesmo sabendo isso a vonta de jogar anda ganhando.
 
-Não posso deixar de fazer a atualização dos IDs dos projetos e notas criadas e excluidas, ao invés de fazer com que os seus IDs fossem um valor a mais do index que o mesmo pertence, eu decidir colocar o ID igual ao index que o mesmo pertence, assim fica fácil de fazer a troca quando for excluir um projeto ou uma nota.
+A primeira necessidade que eu sinto ao acorda é programar pois é quando eu estou mais disposto e com sangue nos olhos para programas, mas ao invés disso tenho que me arrumar para ir trabalhar de outra coisa, o que acaba com a minha vontade e me deixa um tanto frustado e com mais sangue nos olhos, só que essa vontade se esvae quando eu chego em casa e só quero descansar e jogar um pouco antes de ter que ir dormi de novo para acorda no dia seguinte para ir trabalhar, mesmo sabendo que a satisfação de programa e fazer uma coisa simples funcionar seja maior do que upar LV.
 
-Por fim agora só falta fazer os botões de remover e atualizar tanto a nota quanto o projeto.
-
-Obs: Estou ansioso para ver isso pronto e começar a estilizar a pagina, por mais que eu goste bastante pelo back-end eu tenho um apreço pelo front, acho que é por causa da facilidade, pouco problema e da valocidade que você consegue finalizar, por conta disso eu gosto do front, mas no fim isso não supera a paixão que tenho pela satisfação após conseguir solucionar um problema ou fazer um programa funcionar no back-end.
+Bom hoje não fiz muita coisa, apenas adicionei botões de alteração nas notas criadas, fiz uns testes para saber como que eu ia pegar as informações, fiz com que o botão retornasse um id, com esse id conseguir acesso as informações da nota que quero alterar, e adicionei umas divs que sobrepõe os outros elementos e que mostrar uns campos de texto com as informções para alterar. Não foi muito mas foi bastante.
 
 ### Ideias razas do que imagino do site:
  A ideia também é criar uns botões em cada projeto exibido, que redireciona para uma
