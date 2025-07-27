@@ -55,26 +55,37 @@ function selecionando_projeto() {
           modal.innerHTML = `
             <h2>Alterar Nota</h2>
             <form id="form_alterar_nota">
+              <input type="hidden" id="id_nota" name="id_nota" value="${nota_selecionada.id_nota}">
               <label for="nome_nota">Nome da nota:</label>
-              <input type="text" id="nome_nota" name="nome_nota" value="${nota_selecionada.nome_nota}" required>
+              <input type="text" id="nome_nota" name="nome_nota" value="${nota_selecionada.nome_nota}">
               <br>
               <label for="descricao_nota">Descrição da nota:</label>
               <textarea id="descricao_nota" name="descricao_nota" required>${nota_selecionada.descricao_nota}</textarea>
               <br>
-              <button type="submit" id="botao_alterar_nota">Alterar Nota</button>
+              <button type="submit">Alterar Nota</button>
+              <button type="submit" id="fechar_modal">Fechar</button>
             </form>
           `;
           overlay.appendChild(modal);
           document.body.appendChild(overlay);
+
+          document.getElementById('fechar_modal').addEventListener('click', function() {
+            document.body.removeChild(overlay);
+          });
+          
         });
       });
 
-      document.getElementById('form_criar_notas').addEventListener('submit', function (e) {
+
+      document.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        const formulario = e.target;
+
         const informacao_nova_nota = {
-          nome_nota: document.getElementById('nome_nota').value,
-          descricao_nota: document.getElementById('descricao_nota').value
+          id_nota: formulario.querySelector('#id_nota') ? formulario.querySelector('#id_nota').value : null,
+          nome_nota: formulario.querySelector('#nome_nota').value,
+          descricao_nota: formulario.querySelector('#descricao_nota').value
         };
 
         fetch('http://localhost:8000/secunde_page/get_project.php', {
@@ -89,9 +100,10 @@ function selecionando_projeto() {
           location.reload();
         })
         .catch(error => {
-          console.error('Erro ao criar nota:', error);
+          console.error('Erro ao alterar nota:', error);
         });
       });
+ 
     })
     .catch(error => {
       console.error('Erro:', error);

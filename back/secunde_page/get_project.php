@@ -47,15 +47,32 @@ $projetos = pegando_projeto();
 
 $entrada_dados = file_get_contents('php://input');
 $dados_nota = json_decode($entrada_dados, true);
+$id_nota = $dados_nota['id_nota'] ?? '';
 $nome_nota = $dados_nota['nome_nota'] ?? 'Nova nota';
 $descricao_nota = $dados_nota['descricao_nota'] ?? '';
 
-if($descricao_nota != '') {
+if ($id_nota != '') {
+    foreach ($projetos['projetos'][$id_projeto_selecionado]['notas_projeto'] as $nota) {
+        if ($nota['id_nota'] == $id_nota) {
+            $projetos['projetos'][$id_projeto_selecionado]['notas_projeto'][$nota['id_nota']] = [
+                'id_nota' => $nota['id_nota'],
+                'nome_nota' => $nome_nota,
+                'descricao_nota' => $descricao_nota,
+                'data_criacao' => date('Y-m-d H:i:s')
+            ];
+            salvar_dados_no_arquivo_json('armazenando_projetos.json', $projetos);
+            $projetos = pegando_projeto();
+            break;
+        }
+    }
+}
+
+if ($descricao_nota != '' && $id_nota == '') {
     $projetos['projetos'][$id_projeto_selecionado]['notas_projeto'][] = [
         'id_nota' => count($projetos['projetos'][$id_projeto_selecionado]['notas_projeto']),
         'nome_nota' => $nome_nota,
         'descricao_nota' => $descricao_nota,
-        'data_criacao' => date('Y-m-d H:i:s')
+        'data_criacao' => date('D-m-y H:i:s')
     ];
     salvar_dados_no_arquivo_json('armazenando_projetos.json', $projetos);
     $projetos = pegando_projeto();
@@ -70,6 +87,7 @@ foreach ($projetos['projetos'] as $projeto) {
 
 header('Content-Type: application/json');
 echo json_encode([
+    /*"id" => $id_nota,*/
     "dados" => $projeto_selecionado
 ]);
 
