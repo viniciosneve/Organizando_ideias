@@ -19,6 +19,7 @@ document.getElementById('form_criar_projeto').addEventListener('submit', functio
     .then(response => response.json())
     .then(data => {
       document.getElementById('form_criar_projeto').reset();
+      location.reload();
     })
     .catch(error => {
       console.error('Erro:', error);
@@ -49,35 +50,51 @@ function exibir_projetos(projetos) {
       <p>Descrição: ${projeto.descricao_projeto}</p>
       <p>Data criação: ${projeto.data_criacao}</p>
       <button type="submit" id="excluir_${projeto.id}" class="botao_excluindo_projeto">Excluir Projeto</button>
+      <button id="selecionar_${projeto.id}" class="botao_selecionando_projeto">Selecionar Projeto</button>
     `;
-    const botao_selecionando_projeto = document.createElement('button');
-    botao_selecionando_projeto.classList.add('botao_selecionando_projeto');
-    botao_selecionando_projeto.innerHTML = 'Selecionar Projeto';
-    botao_selecionando_projeto.id = `selecionar_${projeto.id}`;
-    botao_selecionando_projeto.type = 'submit';
-    botao_selecionando_projeto.onclick = () => {selecionando_projeto(projeto.id);};
-    div.appendChild(botao_selecionando_projeto);
-
     container.appendChild(div);
   });
-}
 
-function selecionando_projeto(projeto) {
-  fetch('http://localhost:8000/secunde_page/project.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(projeto)
+  document.querySelectorAll('.botao_selecionando_projeto').forEach(button => {
+    button.addEventListener("click", function() {
+      const id_projeto = button.id.split('_')[1];
+      fetch('http://localhost:8000/secunde_page/project.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id: id_projeto, action: 'alterar'})
 
-  })
-    .then(response => response.json())
-    .catch(error => {
-      console.error('Erro:', error);
+      })
+        .then(response => response.json())
+        .catch(error => {
+          console.error('Erro:', error);
+      });
+      
+      location.assign("/secund_page/Detalhes_projeto.html");
+
+    });
   });
 
-  location.assign("/secund_page/Detalhes_projeto.html");
-  
+  document.querySelectorAll('.botao_excluindo_projeto').forEach(button => {
+    button.addEventListener("click", function() {
+      const id_projeto = button.id.split('_')[1];
+      fetch('http://localhost:8000/secunde_page/project.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({id: id_projeto, action: 'excluir'})
+
+      })
+        .then(response => response.json())
+        .catch(error => {
+          console.error('Erro:', error);
+      });
+      location.reload();
+    });
+  });
 }
 
 carregar_projetos();
+

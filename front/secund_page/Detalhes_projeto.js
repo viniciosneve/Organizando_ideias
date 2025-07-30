@@ -29,11 +29,31 @@ function selecionando_projeto() {
                 <p class="descricao_nota">Descrição:<br>${nota.descricao_nota}</p>
                 <p class="data_nota">Data: ${nota.data_criacao}</p>
                 <button class="alterar_nota" id="alterar_nota_${nota.id_nota}">Alterar</button>
+                <button class="excluir_nota" id="excluir_nota_${nota.id_nota}">Excluir</button>
               </div>
             `).join('')}
           </div>
         </div>
       `;
+      document.querySelectorAll('.excluir_nota').forEach(button => {
+        button.addEventListener("click", function() {
+          const id_nota = button.id.split('_')[2];
+          fetch('http://localhost:8000/secunde_page/get_project.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id_nota: id_nota })
+          })
+          .then(response => response.json())
+          .then(data => {
+            location.reload();
+          })
+          .catch(error => {
+            console.error('Erro ao excluir nota:', error);
+          });
+        });
+      });
       document.querySelectorAll(".alterar_nota").forEach(button => {
         button.addEventListener("click", function() {
           const nota_selecionada = data.dados.notas_projeto[button.id.split('_')[2]];
@@ -112,17 +132,3 @@ function selecionando_projeto() {
 }
 
 selecionando_projeto();
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**/
